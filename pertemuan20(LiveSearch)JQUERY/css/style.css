@@ -1,0 +1,8 @@
+.loader {
+  width: 100px;
+  position: absolute;
+  z-index: -1;
+  left: 220px;
+  margin-bottom: 5px;
+  display: none;
+}
