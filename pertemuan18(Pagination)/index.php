@@ -53,22 +53,32 @@ if (isset($_POST["cari"])) {
         </form>
 
         <!-- navigasi -->
-        <?php if ($halamanAktif > 1) : ?>
-            <a href="?halaman=<?= $halamanAktif - 1; ?>">&laquo;</a>
-        <?php endif ?>
-        <?php for ($i = 1; $i <= $jumlahHalaman; $i++) : ?>
+        <nav aria-label="...">
+            <ul class="pagination mt-1">
+                <?php if ($halamanAktif > 1) : ?>
+                    <li class="page-item">
+                        <a class="page-link" href="?halaman=<?= $halamanAktif - 1; ?>">Previous</a>
+                    </li>
+                <?php endif ?>
 
-            <?php if ($i == $halamanAktif) : ?>
-                <a href="?halaman=<?= $i; ?>" style="font-weight: bold; color: black;"><?= $i;  ?></a>
-            <?php else : ?>
-                <a href="?halaman=<?= $i; ?>"><?= $i;  ?></a>
-            <?php endif; ?>
-        <?php endfor; ?>
+                <?php for ($i = 1; $i <= $jumlahHalaman; $i++) : ?>
+                    <?php if ($i == $halamanAktif) : ?>
+                        <li class="page-item active"><a class="page-link" href="?halaman=<?= $i; ?>"><?= $i;  ?></a></li>
+                    <?php else : ?>
+                        <li class="page-item"><a class="page-link" href="?halaman=<?= $i; ?>"><?= $i;  ?></a></li>
+                    <?php endif; ?>
+                <?php endfor ?>
 
-        <?php if ($halamanAktif < $jumlahHalaman) : ?>
-            <a href="?halaman=<?= $halamanAktif + 1; ?>">&raquo;</a>
-        <?php endif ?>
-        <br>
+                <?php if ($halamanAktif < $jumlahHalaman) : ?>
+                    <li class="page-item">
+                        <a class="page-link" href="?halaman=<?= $halamanAktif + 1; ?>">Next</a>
+                    </li>
+                <?php endif ?>
+            </ul>
+        </nav>
+
+
+
         <table class="table table-bordered mt-1">
             <thead class="thead-dark">
                 <tr>
